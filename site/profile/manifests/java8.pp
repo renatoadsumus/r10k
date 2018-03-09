@@ -1,4 +1,4 @@
-class java8 {
+class profile::java8 {
 	
 	package{'java-1.8.0-openjdk-devel':
 		ensure => present,

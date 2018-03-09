@@ -1,3 +1,3 @@
 class profile::base{
-	include java8
+	include profile::java8
 }
