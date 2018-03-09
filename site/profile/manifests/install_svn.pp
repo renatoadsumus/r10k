@@ -1,4 +1,4 @@
-class role::install_svn {
+class profile::install_svn {
 	package{"subversion":
 		ensure   => present,
 	}
