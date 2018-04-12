@@ -1,3 +1,3 @@
 class role { 
-  include profile::base
+  include profile::install_svn
 } 
