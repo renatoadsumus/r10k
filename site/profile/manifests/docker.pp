@@ -1,7 +1,10 @@
-class profile::docker inherits profile::base{
+class profile::docker inherits profile::base{	
 	
-	file { '/etc/site-conf-r10k':
-    ensure => 'directory',
-  }
+  ### CRIANDO A PASTA /OPT/AGENTS/GO-AGENT
+	file{"/opt/site-conf-r10k/":
+		ensure  => "directory",
+		owner   => "tfsservice",
+		group   => "suporte",		
+	}
 	
 }
