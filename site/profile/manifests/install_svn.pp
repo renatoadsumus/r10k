@@ -1,4 +1,4 @@
-class profile::install_svn inherits profile::base{
+class profile::install_svn{
 	package{"subversion":
 		ensure   => present,
 	}
