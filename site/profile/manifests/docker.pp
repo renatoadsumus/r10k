@@ -5,6 +5,8 @@ class profile::docker inherits profile::base{
 		ensure  => "directory",			
 	}	
 	
-	
+	package{'docker-ce':
+        ensure => present,
+    }
 	
 }
