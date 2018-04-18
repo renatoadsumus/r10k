@@ -5,6 +5,12 @@ class profile::docker inherits profile::base{
 		ensure  => "directory",			
 	}	
 	
+	service { 'docker':
+        ensure  => running,
+        enable  => true,
+        subscribe => [Package['docker'],
+    }
+	
 	package{'docker':
         ensure => present,
     }
