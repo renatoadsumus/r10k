@@ -11,7 +11,7 @@ class profile::install_docker{
         #ensure  => running,
         #enable  => true,
         #subscribe => [Package['docker'],File["/etc/docker"],File["daemon.json"]],
-    }
+    #}
 	
 	#package{'docker':
        #ensure => present,
