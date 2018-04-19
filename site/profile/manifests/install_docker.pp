@@ -4,7 +4,7 @@ class profile::install_docker{
 	service { 'docker':
         ensure  => running,
         enable  => true,
-        #subscribe => [Package['docker'],File["/etc/docker"],File["daemon.json"]],
+        subscribe => [Package['docker'],File["/etc/docker"],File["daemon.json"]],
     }
 	
 	package{'docker':
