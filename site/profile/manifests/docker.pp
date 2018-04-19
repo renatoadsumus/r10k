@@ -1,18 +1,23 @@
 class profile::docker inherits profile::base{	
 	
-  ### CRIANDO A PASTA /OPT/AGENTS/GO-AGENT
-	file{"/opt/site-conf-r10k/":
-		ensure  => "directory",			
-	}	
-	
+
 	service { 'docker':
         ensure  => running,
         enable  => true,
-        subscribe => [Package['docker']],
+        subscribe => [Package['docker'],File["/etc/docker"],File["daemon.json"]],
     }
 	
 	package{'docker':
         ensure => present,
     }
 	
+	 file{ '/etc/docker':
+        ensure  => 'directory',        
+    }
+	
+    file {'daemon.json':
+        ensure => 'file',
+        path => '/etc/docker/daemon.json',
+        content => '{"bip":"10.66.33.10/24"}',        
+    }
 }
