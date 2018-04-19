@@ -8,10 +8,10 @@ class profile::docker_container inherits profile::base{
 		require   => Class['docker'],
 	}  	
 	
-  #::docker::run { 'nginx':
-		#image   => 'nginx:stable-alpine',
+  ::docker::run { 'nginx':
+		image   => 'nginx:stable-alpine',
 		#ports   => ['8080:80'],
-		#require => Docker::Image['nginx'],
-  #}
+		require => Docker::Image['nginx'],
+  }
   
 }

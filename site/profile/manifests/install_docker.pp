@@ -1,15 +1,21 @@
 class profile::install_docker{
 
+	#include ::docker
 
-	service { 'docker':
-        ensure  => running,
-        enable  => true,
-        subscribe => [Package['docker'],File["/etc/docker"],File["daemon.json"]],
+	class { 'docker' :
+		manage_package => true,
+		docker_ce_package_name  => 'docker',
+	}
+  
+	#service { 'docker':
+        #ensure  => running,
+        #enable  => true,
+        #subscribe => [Package['docker'],File["/etc/docker"],File["daemon.json"]],
     }
 	
-	package{'docker':
-        ensure => present,
-    }
+	#package{'docker':
+       #ensure => present,
+    #}
 	
 	file{ '/etc/docker':
         ensure  => 'directory',        
