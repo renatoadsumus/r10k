@@ -8,7 +8,7 @@ class profile::docker inherits profile::base{
 	service { 'docker':
         ensure  => running,
         enable  => true,
-        subscribe => [Package['docker'],
+        subscribe => [Package['docker']],
     }
 	
 	package{'docker':
