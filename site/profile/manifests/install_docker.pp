@@ -1,11 +1,12 @@
 class profile::install_docker{
 
-	#include ::docker
+	include ::docker
 
-	class { 'docker' :
-		manage_package => true,
-		docker_ce_package_name  => 'docker',
-	}
+	#class { 'docker' :
+		#use_upstream_package_source => false,
+		#service_overrides_template  => false,
+		#docker_ce_package_name  => 'docker',
+	#}
   
 	#service { 'docker':
         #ensure  => running,
