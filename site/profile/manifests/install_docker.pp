@@ -1,5 +1,5 @@
-class profile::docker inherits profile::base{	
-	
+class profile::install_docker{
+
 
 	service { 'docker':
         ensure  => running,
@@ -11,7 +11,7 @@ class profile::docker inherits profile::base{
         ensure => present,
     }
 	
-	 file{ '/etc/docker':
+	file{ '/etc/docker':
         ensure  => 'directory',        
     }
 	
@@ -20,4 +20,5 @@ class profile::docker inherits profile::base{
         path => '/etc/docker/daemon.json',
         content => '{"bip":"10.66.33.10/24"}',        
     }
+	
 }
