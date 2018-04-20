@@ -11,9 +11,9 @@ class profile::docker_container inherits profile::base{
 		#require => Docker::Image['renatoadsumus/gocd'],
   #}
   
-  file {'daemon.json':
+  file {'meu.json':
         ensure => 'file',
-        path => '/opt/daemon.json',
+        path => '/opt/meu.json',
         content => '{"bip":"10.66.33.10/24"}', 
 		
     }
