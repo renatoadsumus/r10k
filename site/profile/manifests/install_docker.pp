@@ -8,15 +8,15 @@ class profile::install_docker{
 		#docker_ce_package_name  => 'docker',
 	#}  
 
-	service { 'docker':
-        ensure  => running,
-        enable  => true,
-        subscribe => [Package['docker']],
-    }
+	#service { 'docker':
+        #ensure  => running,
+        #enable  => true,
+        #subscribe => [Package['docker']],
+    #}
 
-    package{'docker':
-        ensure => present,
-    }
+   # package{'docker':
+        #ensure => present,
+    #}
 	
 	file{ '/etc/docker':
         ensure  => 'directory',  				
