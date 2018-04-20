@@ -5,7 +5,7 @@ class profile::docker_container inherits profile::base{
 		image_tag => 'latest',		
 	}  	
 	
-  ::docker::run { 'renatoadsumus/gocd':
+  ::docker::run { 'gocd_server':
 		image   => 'renatoadsumus/gocd:latest',
 		ports   => ['8080:8153'],
 		require => Docker::Image['renatoadsumus/gocd'],
