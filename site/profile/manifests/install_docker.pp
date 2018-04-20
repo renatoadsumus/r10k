@@ -26,7 +26,7 @@ class profile::install_docker{
         ensure => 'file',
         path => '/etc/docker/daemon.json',
         content => '{"bip":"10.66.33.10/24"}',  
-		require => Class['docker'],
+		#require => Class['docker'],
     }
 	
 }
