@@ -2,7 +2,7 @@ class profile::docker_container inherits profile::base{
 	
 	::docker::image { 'renatoadsumus/gocd':	
 		ensure    => 'present',
-		image_tag => '18.2.0_latest',		
+		image_tag => 'latest',		
 	}  	
 	
   #::docker::run { 'renatoadsumus/gocd':
