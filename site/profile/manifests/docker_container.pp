@@ -1,17 +1,14 @@
-class profile::docker_container inherits profile::base{	
-
-	include ::docker	
+class profile::docker_container inherits profile::base{		
 	
-	::docker::image { 'nginx':	
+	::docker::image { 'renatoadsumus/gocd':	
 		ensure    => 'present',
-		image_tag => 'stable-alpine',
-		require   => Class['docker'],
+		image_tag => '18.2.0_latest',		
 	}  	
 	
-  ::docker::run { 'nginx':
-		image   => 'nginx:stable-alpine',
-		#ports   => ['8080:80'],
-		require => Docker::Image['nginx'],
+  ::docker::run { 'renatoadsumus/gocd':
+		image   => 'renatoadsumus/gocd:18.2.0_latest',
+		ports   => ['8080:8153'],
+		require => Docker::Image['renatoadsumus/gocd'],
   }
   
 }
