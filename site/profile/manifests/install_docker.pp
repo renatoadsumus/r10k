@@ -1,6 +1,6 @@
 class profile::install_docker{
 
-	include ::docker
+	#include ::docker
 
 	#class { 'docker' :
 		#use_upstream_package_source => false,
@@ -8,6 +8,15 @@ class profile::install_docker{
 		#docker_ce_package_name  => 'docker',
 	#}  
 
+	service { 'docker':
+        ensure  => running,
+        enable  => true,
+        subscribe => [Package['docker']],
+    }
+
+    package{'docker':
+        ensure => present,
+    }
 	
 	file{ '/etc/docker':
         ensure  => 'directory',  				
