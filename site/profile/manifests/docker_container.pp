@@ -11,10 +11,8 @@ class profile::docker_container inherits profile::base{
 		#require => Docker::Image['renatoadsumus/gocd'],
   #}
   
-  file {'meu.json':
-        ensure => 'file',
-        path => '/opt/meu.json',
-        content => '{"bip":"10.66.33.10/24"}', 
-		
+  exec {'gocd_server':
+        command  => 'docker run -d -p 8080:8153 renatoadsumus/gocd:latest',
+        user => 'root',   		
     }
 }
