@@ -8,27 +8,27 @@ class profile::install_docker{
 		#docker_ce_package_name  => 'docker',
 	#  
 
-	class { 'docker':
-			docker_ee => true,
-			docker_ee_source_location => 'https://download.docker.com/linux/centos/docker-ce.repo',
+	#class { 'docker':
+			#docker_ee => true,
+			#docker_ee_source_location => 'https://download.docker.com/linux/centos/docker-ce.repo',
 			#'https://<docker_ee_repo_url>',
 			#docker_ee_key_source => 'https://<docker_ee_key_source_url>',
-	}
+	#}
 
 	 #baseurl  => "https://download.docker.com/linux/centos/7/\$basearch/stable",
         #proxy    => "$proxy",
         #gpgcheck => 1,
         #gpgkey   => "https://download.docker.com/linux/centos/gpg",
 		
-	#service { 'docker':
-        #ensure  => running,
-        #enable  => true,
-        #subscribe => [Package['docker']],
-    #}
+	service { 'docker':
+        ensure  => running,
+        enable  => true,
+        subscribe => [Package['docker']],
+    }
 
-   # package{'docker':
-        #ensure => present,
-    #}
+    package{'docker':
+        ensure => present,
+   }
 	
 	file{ '/etc/docker':
         ensure  => 'directory',  				
@@ -38,7 +38,7 @@ class profile::install_docker{
         ensure => 'file',
         path => '/etc/docker/daemon.json',
         content => '{"bip":"10.66.33.10/24"}',  
-		#require => Class['docker'],
+		require => [Package['docker']],
     }
 	
 }
